@@ -31,7 +31,8 @@ jQuery( document ).ready(function( $ ) {
                     }
                     wp_set_form_error_message('', ['Please fix these errors']);
                 } else if (a.status == 500) {
-                    wp_set_form_error_message();
+                    content = jQuery.parseJSON(a.responseText);
+                    wp_set_form_error_message('', [content.message]);
                 }
                 var values = a.responseText
                 // remove all errormessages
