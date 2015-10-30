@@ -1,0 +1,23 @@
+/**
+ * Created by heiglandreas on 30.10.15.
+ */
+ul.errormessage, ul.formerrormessage {
+    border: 1px solid darkred;
+    border-top-width: 0;
+    list-style-type: none;
+    margin:  0;
+    border-radius: 0 0 2px 2px;
+    padding: 0.5em;
+    line-height: 1.1em;
+    background-color: rgba(255, 128, 128, 0.3);
+}
+
+ul.formerrormessage {
+    border-top-width: 1px;
+}
+
+input.error, textarea.error, select.error {
+    border-color: darkred;
+    border-radius: 2px 2px 0 0;
+}
+
