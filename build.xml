@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="ajaxComments" default="build" basedir=".">
+    <target name="bumpversion">
+        <loadfile property = "version" file = "VERSION"/>
+        <echo>Bumping version to ${version}</echo>
+        <reflexive>
+            <fileset dir=".">
+                <include name="index.php"/>
+            </fileset>
+            <filterchain>
+                <replaceregexp>
+                    <regexp pattern="Version:.*" replace="Version: ${version}"/>
+                </replaceregexp>
+            </filterchain>
+        </reflexive>
+    </target>
+    <target name="build" depends="bumpversion,deploy.git,deploy.svn"/>
+    <target name="deploy.svn">
+        <property file=".svnAccess" prefix="svn"/>
+        <filesync
+                rsyncPath="rsync"
+                destinationDir="${project.basedir}/svn/trunk"
+                sourceDir="${project.basedir}"
+                verbose="true"
+                exclude="${project.basedir}/svn"
+                excludeFile=".svnAccess"
+                />
+        <svncommit
+            username="${svn.username}"
+            password="${svn.password}"
+            workingcopy="${project.basedir}/svn/trunk"
+            message="Bumps version to ${version}"
+            nocache="true"
+            />
+    </target>
+    <target name="deploy.git">
+        <gitcommit repository="." allFiles="true" message="Bumps version to ${version}"/>
+        <gittag name="${version}" repository="." sign="true" message="Version ${version}"/>
+        <gitpush repository="." tags="true" destination="origin"/>
+    </target>
+</project>
