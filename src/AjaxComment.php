@@ -245,7 +245,7 @@ class AjaxComment
                 );
             }
 
-            do_action('wp_ajax_comment_store_metadata', $values, $comment_id);
+            do_action('wp_ajax_comment_store_metadata', $comment_id, $values);
 
             return get_comment($comment_id);
         } catch (\Exception $e) {

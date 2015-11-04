@@ -3,7 +3,7 @@
 Plugin Name: Wordpress Ajax Comments
 Plugin URI: https://github.com/heiglandreas/wordpressAjaxComments
 Description: This plugin enables sending coment-forms via ajax and displaying errors inline in the form
-Version: 1.0
+Version: 1.0.0
 Author: Andreas Heigl <andreas@heigl.org>
 Author URI: http://andreas.heigl.org
 Text Domain: wp-ajax-comment

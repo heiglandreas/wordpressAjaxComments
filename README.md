@@ -13,7 +13,7 @@ work as expected when you use a plugin to extend the comment form.
 
 There are the following actions and filters
 
-* Action wp_ajax_comment_store_metadata(array) To store metadata
+* Action wp_ajax_comment_store_metadata(comment_id, array) To store metadata
 * Filter wp_ajax_comment_validate_form(array) To validate the form-data
 
 The array passed to the callbacks is an associative array of the following form:
